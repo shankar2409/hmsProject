@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="classes" name="Suite">
+  <test thread-count="1" parallel="classes" name="HMSApp">
+    <classes>
+      <class name="com.AdminModule.VerifyAdmin_ableToAdd_Speicalization"/>
+      <class name="com.DoctorModule.Book_AppointmentsTest"/>
+      <class name="com.DoctorModule.AddPatientTest"/>
+    </classes>
+  </test> <!-- HMSApp -->
+</suite> <!-- Suite -->
