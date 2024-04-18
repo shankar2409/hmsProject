@@ -14,11 +14,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 public class ExcelUtils {
 	/**
 	 * this method is used to read data from the excel sheet in Existing sheets
-	 * 
-	 * 
+	 *  
 	 * @author Shankar
-	 * 
-	 * 
 	 *
 	 * @param sheetName
 	 * @param rowNo
@@ -65,7 +62,7 @@ public class ExcelUtils {
 		FileInputStream fis = new FileInputStream(IpathConstants.ExcelPath);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(sheetName);
-		sheet.createRow(rowNo).createCell(cellNo).setCellValue(value);
+		sheet.getRow(rowNo).getCell(cellNo).setCellValue(value);
 		FileOutputStream fos = new FileOutputStream(IpathConstants.ExcelPath);
 		wb.write(fos);
 		wb.close();
