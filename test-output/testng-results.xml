@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-09T12:16:40 IST" name="Default suite" finished-at="2024-03-09T12:16:41 IST" duration-ms="788">
+  <suite started-at="2024-04-12T10:49:22 IST" name="Default suite" finished-at="2024-04-12T10:50:14 IST" duration-ms="51855">
     <groups>
     </groups>
-    <test started-at="2024-03-09T12:16:40 IST" name="Default test" finished-at="2024-03-09T12:16:41 IST" duration-ms="788">
-      <class name="com.practice.DataBaseReadMutlipleData">
-        <test-method signature="methos()[pri:0, instance:com.practice.DataBaseReadMutlipleData@479d31f3]" started-at="2024-03-09T12:16:40 IST" name="methos" finished-at="2024-03-09T12:16:41 IST" duration-ms="696" status="PASS">
+    <test started-at="2024-04-12T10:49:22 IST" name="Default test" finished-at="2024-04-12T10:50:14 IST" duration-ms="51855">
+      <class name="com.practice.CaptchaHandling">
+        <test-method signature="t1()[pri:0, instance:com.practice.CaptchaHandling@6e171cd7]" started-at="2024-04-12T10:49:22 IST" name="t1" finished-at="2024-04-12T10:50:14 IST" duration-ms="51696" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- methos -->
-      </class> <!-- com.practice.DataBaseReadMutlipleData -->
+        </test-method> <!-- t1 -->
+      </class> <!-- com.practice.CaptchaHandling -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

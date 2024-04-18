@@ -1,5 +1,8 @@
 package assignment;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
@@ -8,31 +11,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class BokkMyShowPrintThreateTiming {
-	@Test(expectedExceptionsMessageRegExp = "NoSuchElementException")
-	public void bookMyShow() throws InterruptedException {
-		
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--incognito");
-		options.addArguments("start-maximized");
-		options.addArguments("disable-infobars");
-		options.addArguments("--disable-extensions");
-		WebDriver driver = new ChromeDriver(options);
+	@Test
+	public void bookMyShow() throws InterruptedException, AWTException {
+		FirefoxOptions options=new FirefoxOptions();
+		options.addArguments("--disable -notifications");
+		WebDriver driver = new FirefoxDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.get("https://in.bookmyshow.com/");
 		driver.findElement(By.xpath("//div[@class='bwc__sc-ttnkwg-17 gvzyfS']/following::span[text()='Bengaluru']"))
 				.click();
-		driver.findElement(By.xpath("//div[@class='sc-lnhrs7-4 dDgeSF']/descendant::div[text()='Dune: Part Two']"))
+		driver.findElement(By.xpath("//div[@class='sc-lnhrs7-4 dDgeSF']/descendant::div[text()='Yuva']"))
 				.click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath(
 				"//div[@class='sc-2k6tnd-1 kfhxuo']/parent::div/following-sibling::div//descendant::span[text()='Book tickets']"))
 				.click();
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_ALT);
+		r.keyPress(KeyEvent.VK_B);
+		r.keyRelease(KeyEvent.VK_ALT);
+		r.keyRelease(KeyEvent.VK_B);
+		driver.findElement(By.id("wzrk-cancel")).click();
 		WebElement format = driver.findElement(By.xpath("//div[@class='sc-10qvp23-0 eyzMRC']/div"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(format));

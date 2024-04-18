@@ -1,5 +1,6 @@
 package assignment;
 
+import java.util.HashSet;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,8 +32,7 @@ public class AmazonPrimeVideoMovieName {
 		} catch (Exception e) {
 			System.out.println("exception");
 			w.WebDriverWaitObj(driver, 20).until(ExpectedConditions.presenceOfNestedElementLocatedBy(home, By.xpath("//a[.='Movies']")));
-//			movi.click();
-		}
+ 		}
 		
 		List<WebElement> mov = driver.findElements(By.xpath(
 				"//p[.='Action and adventure movies']/ancestor::section[@data-testid='standard-carousel']/descendant::ul[@class='_70Gje9']/li[@class='tHfREs']"));
@@ -46,5 +46,6 @@ public class AmazonPrimeVideoMovieName {
 
 		System.out.println("done...");
 		driver.quit();
+		HashSet<String> fd = new HashSet<String>();
 	}
 }

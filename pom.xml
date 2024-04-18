@@ -5,8 +5,7 @@
 	<groupId>testyantra</groupId>
 	<artifactId>com.hmshosipital</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<dependencies><!--
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependencies><!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -63,7 +62,7 @@
 	</properties>
 	<profiles>
 		<profile>
-			<id>smoke</id>
+			<id>suitefiles</id>
 			<build>
 				<pluginManagement>
 					<plugins>
