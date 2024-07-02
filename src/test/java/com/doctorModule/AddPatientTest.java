@@ -1,9 +1,13 @@
 package com.doctorModule;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -46,6 +50,11 @@ public class AddPatientTest extends BaseClass {
 		String medHis = eLib.readDataFromExcelFile("AddPatientSheet", 1, 6);
 		Doctor_dashboardPage dd=new Doctor_dashboardPage(driver);
 		email=email+jLib.randomNo(500)+"@gmail.com";
+		FluentWait wait = new FluentWait(driver);
+		wait.until(ExpectedConditions.alertIsPresent());
+		wait.pollingEvery(Duration.ofSeconds(10));
+		wait.withTimeout(Duration.ofSeconds(50));
+		wait.ignoring(NoAlertPresentException.class);
 		dd.AddPatientLink();
 		DoctorAddPatientPage dap=new DoctorAddPatientPage(driver);
 			dap.addPatient(patiName, contact, email, gender, address, age, medHis);

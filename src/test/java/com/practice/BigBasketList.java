@@ -17,7 +17,6 @@ public class BigBasketList {
 
 	public static void main(String[] args) throws InterruptedException, AWTException {
 		WebDriver driver = new ChromeDriver();
-		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.get("https://www.bigbasket.com/");
 		driver.manage().window().maximize();

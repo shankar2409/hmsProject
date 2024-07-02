@@ -1,8 +1,22 @@
 package testYantraArrayPrograms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Set;
+import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class StringPrograms {
@@ -29,7 +43,7 @@ public class StringPrograms {
 
 	@SuppressWarnings("deprecation")
 	@Test
-	public void palindromeNumber() throws Throwable {
+	public void palindromeString() throws Throwable {
 		String s = "dad";
 		String s1 = "";
 		for (int i = s.length() - 1; i >= 0; i--) {
@@ -67,13 +81,11 @@ public class StringPrograms {
 					}
 					count++;
 				}
-
 			}
 			if (count > 0) {
 				System.out.println(s.charAt(i) + "   present in times  >" + count);
 			}
 		}
-
 	}
 
 	@Test
@@ -356,7 +368,7 @@ public class StringPrograms {
 
 	@Test
 	public void removeDuplicateVOWEL_from_String() {
-		String s = "Inudiaro";
+		String s = "India";
 		s = s.toLowerCase();
 		int count = 0;
 		String res = "";
@@ -426,7 +438,7 @@ public class StringPrograms {
 	@Test
 	public void program7() {
 		// find maximum length of the string
-		String[] s = { "ab", "abc", "moye", "ctd", "cdy", "moye", "okay" };
+		String[] s = { "ab", "abc", "ctd", "cdy", "okay" };
 		// o/p=moye moye okay 4
 		int max = s[0].length();
 		for (int i = 0; i < s.length; i++) {
@@ -590,7 +602,180 @@ public class StringPrograms {
 		s = s.concat(s1);
 		s1 = s.substring(0, s.length() - s1.length());
 		s = s.substring(s1.length());
-		System.out.println(s+ "     "+s1);
+		System.out.println(s + "     " + s1);
 
 	}
+
+	@Test
+	public static void validationString() {
+		String s = "{}[]{}(";
+	
+		ArrayList<Character> arr = new ArrayList<Character>();
+		for (int i = 0; i < s.length(); i++) {
+			if ((arr.size() != 0) && (s.charAt(i) == '}' && arr.get(arr.size() - 1) == '{')
+					|| (s.charAt(i) == ']' && arr.get(arr.size() - 1) == '[')
+					|| (s.charAt(i) == ')' && arr.get(arr.size() - 1) == '(')
+					|| (s.charAt(i) == '>' && arr.get(arr.size() - 1) == '<')
+					|| (s.charAt(i) == 94 && arr.get(arr.size() - 1) == '/')) {
+				arr.remove(arr.size() - 1);
+			}
+			
+			else {
+				arr.add(s.charAt(i));
+			}
+		}
+		if (arr.size() == 0) {
+			System.out.println("String is balnced");
+		} else {
+			System.out.println("String is not balanced");
+		}
+	}
+	@Test
+	public void balancedString() {
+		 String s="{([])}";
+	        Stack<Character> st=new Stack<Character>();
+	        for(char c:s.toCharArray()){
+	            
+	            if(c=='{'||c=='['||c=='('){
+	                st.push(c);
+	            }else if(!st.isEmpty()&&((c=='}'&&st.peek()=='{')||(c==')'&&st.peek()=='(')||(c==']'&&st.peek()=='['))){
+	                st.pop();
+	            }
+	        }
+	        if(st.isEmpty()){
+	            System.out.println("balanced");
+	        }else {
+	        	System.out.println("unBalanced");
+	        }
+	}
+
+	public static String validatePwd(String s) {
+//		String s="mhankar23 13";
+		boolean flag = true;
+		int capCount = 0;
+		int smallCount = 0;
+		int digitCount = 0;
+		int splCount = 0;
+		if (s.length() >= 8 && s.length() <= 16 && !s.contains(" ")) {
+			for (int i = 0; i < s.length() - 1; i++) {
+				if (s.charAt(i) == s.charAt(i + 1)) {
+					flag = false;
+					break;
+				}
+			}
+			for (int i = 0; i < s.length(); i++) {
+				char ch = s.charAt(i);
+				if (ch >= 'A' && ch <= 'Z') {
+					capCount++;
+				} else if (ch >= 'a' && ch <= 'z') {
+					smallCount++;
+				} else if (ch >= '0' && ch <= '9') {
+					digitCount++;
+				} else {
+					splCount++;
+				}
+			}
+			if (capCount < 1 || smallCount < 1 || digitCount < 1) {
+				flag = false;
+			}
+		} else {
+			flag = false;
+		}
+		if (flag) {
+			return "password is valid";
+		} else {
+			return "password is not valid ";
+		}
+	}
+
+	@Test
+	public void validatePwd() {
+		System.out.println(validatePwd("shdvsA23 "));
+	}
+
+	@Test
+	public void validatePasswordUsingCharacterClass() {
+		String s = "sHankade@32";
+		boolean flag = true;
+		int capCount = 0;
+		int smallCount = 0;
+		int digitCount = 0;
+		int splCount = 0;
+		if (s.length() >= 8 && s.length() <= 16 && !s.contains(" ")) {
+			for (int i = 0; i < s.length() - 1; i++) {
+				if (s.charAt(i) == s.charAt(i + 1)) {
+					flag = false;
+					break;
+				}
+			}
+			for (int i = 0; i < s.length(); i++) {
+				char ch = s.charAt(i);
+				if (Character.isLowerCase(ch)) {
+					smallCount++;
+				} else if (Character.isUpperCase(ch)) {
+					capCount++;
+				} else if (Character.isDigit(ch)) {
+					digitCount++;
+				} else {
+					splCount++;
+				}
+			}
+			if (capCount < 1 || smallCount < 1 || digitCount < 1) {
+				flag = false;
+				;
+			}
+		} else {
+			flag = false;
+		}
+		if (flag) {
+			System.out.println("password is valid");
+		} else {
+			System.out.println("password is not valid ");
+		}
+	}
+
+	@Test
+	public void validatePhoneNum() {
+		String s = "8876569233";
+		String regex = "^[89][0-9]{9}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher m = pattern.matcher(s);
+
+		System.out.println(m.matches());
+	}
+
+	@Test
+	public void additionOfArray() {
+		int[] a = { 12, 43, 3, 354, 6, 3, 10, 50 };
+		int[] b = { 2, 3, 4, 5, 6 };
+		int max = Math.max(a.length, b.length);
+		int[] res = new int[max];
+		for (int i = 0; i < res.length; i++) {
+			int sum = 0;
+			if (i < a.length) {
+				sum += a[i];
+			}
+			if (i < b.length) {
+				sum += b[i];
+			}
+			res[i] = sum;
+		}
+		System.out.println(Arrays.toString(res));
+	}
+	@Test
+	public void StringShuffle() {
+		String s="shankarRaman";
+		ArrayList<Character> l = new ArrayList<Character>();
+		char[] ch = s.toCharArray();
+		for (char c : ch) {
+			l.add(c);
+		} 
+		Collections.shuffle(l);
+		StringBuffer sb = new StringBuffer();
+		for (char c : l) {
+			sb.append(c);
+		}
+		System.out.println(sb);
+	}
+	
 }

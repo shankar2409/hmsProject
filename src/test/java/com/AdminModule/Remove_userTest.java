@@ -16,7 +16,7 @@ import com.ObjectRepo.logoutPage;
 import com.hms.genericUtils.BaseClass;
 
 public class Remove_userTest extends BaseClass {
-	@Test(groups = "regression",enabled = false)
+	@Test(groups = "regression")
 	public void Remove_user_Test() throws Exception {
 		System.out.println("start..");
 

@@ -12,9 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-public class BrokenLinkTest {
+	public class BrokenLinkTest {
 	static LinkedHashSet<String> succesfullLinks;
 
 	public static void main(String[] args) throws IOException {
@@ -25,7 +26,6 @@ public class BrokenLinkTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		succesfullLinks = new LinkedHashSet<String>();
 		driver.get("https://www.irctc.co.in/nget/train-search");
-		Assert.fail();
 //		driver.get("http://www.epfindia.gov.in");
 		List<WebElement> allLinks = driver.findElements(By.xpath("//a|//link"));
 		System.out.println(allLinks.size());

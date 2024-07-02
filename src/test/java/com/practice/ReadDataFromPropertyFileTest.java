@@ -1,8 +1,14 @@
 package com.practice;
 
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+
+import org.json.simple.JSONObject;
+
+import com.hms.genericUtils.IpathConstants;
+import com.mysql.cj.xdevapi.JsonParser;
 
 public class ReadDataFromPropertyFileTest {
 
@@ -19,5 +25,7 @@ public class ReadDataFromPropertyFileTest {
 //		System.out.println(prop.getProperty("Doctor-username"));
 		
 		prop.store(fos,"write data");
+		
+		
 	}
 }

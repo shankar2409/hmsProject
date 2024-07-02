@@ -6,9 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class CaptchaHandling {
+public class CaptchaHandling extends Object {
 	@Test
 	public void t1() throws InterruptedException {
+		
 		ChromeDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));

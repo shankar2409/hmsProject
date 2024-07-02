@@ -1,10 +1,17 @@
 package testYantraArrayPrograms;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TreeSet;
 
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.testng.annotations.Test;
 
 
@@ -149,6 +156,21 @@ public class practice {
 				break;
 			}
 		}
+	}
+	@Test
+	public void getCentredata() throws Exception, IOException {
+		FileInputStream fis = new FileInputStream(".//src//test//resources//TestData.xlsx");
+		Workbook wk = WorkbookFactory.create(fis);
+		Sheet sheet = wk.getSheet("PatientRegistration");
+		int row = sheet.getPhysicalNumberOfRows();
+		int centreCell = sheet.getRow(0).getPhysicalNumberOfCells()/2;
+		for (int i = 0; i < row; i++) {
+			String celvalue = sheet.getRow(i).getCell(centreCell).getStringCellValue();
+			System.out.println(celvalue);
+			
+			
+		}
+		
 	}
 
 }

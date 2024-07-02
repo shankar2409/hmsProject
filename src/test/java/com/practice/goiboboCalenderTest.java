@@ -1,5 +1,7 @@
 package com.practice;
 
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
@@ -7,15 +9,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.beust.jcommander.Parameter;
 
 public class goiboboCalenderTest {
-	public static void main(String[] args) throws InterruptedException {
+	WebDriver driver;
+	
+	@Test
+	@Parameters({"browser","url"})
+	public void mi(String browser,String url) throws Throwable {
 		String monthyear = "July 2024";
 		int date = 21;
-		WebDriver driver = new ChromeDriver();
+		if (browser.contains("chrome"))
+			driver = new ChromeDriver();
+		else if (browser.contains("firefox"))
+			driver = new FirefoxDriver();
+		else if (browser.contains("edge"))
+			driver = new EdgeDriver();
+		else
+			throw new Exception("--invalid browser name--");
 		driver.manage().window().maximize();
+		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("https://www.goibibo.com/flights/");
+//		driver.get("https://www.goibibo.com/flights/");
+		driver.get(url);
 		driver.findElement(By.cssSelector("[class='logSprite icClose']")).click();
 
 		driver.findElement(By.xpath("//span[@class='sc-12foipm-17 eBxhjL fswWidgetLabel']/following-sibling::p"))

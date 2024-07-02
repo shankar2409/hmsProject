@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
 
 import com.hms.genericUtils.WebDriverUtils;
 
@@ -47,5 +48,11 @@ public class AmazonPrimeVideoMovieName {
 		System.out.println("done...");
 		driver.quit();
 		HashSet<String> fd = new HashSet<String>();
+	}
+	@Test
+	public void mn() {
+		System.out.println("jghjhgjgjghj");
+		String s="johny johny yes papa".replace('j', 't').replace('p', 'n');
+		System.out.println(s);
 	}
 }

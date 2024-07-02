@@ -17,7 +17,7 @@ import io.reactivex.rxjava3.internal.util.LinkedArrayList;
 public class MapInterface {
 	@Test
 	public void m1() {
-
+		System.out.println(System.getProperties());
 		TreeSet<String> ts = new TreeSet<String>();
 		ts.add("sf");
 		ts.add("sd");
@@ -43,6 +43,9 @@ public class MapInterface {
 		ht.put("fk3", "skdf");
 		ht.put("fk2", "skdf");
 		System.out.println(ht);
+		for (Entry<String, Object> s : ht.entrySet()) {
+			System.out.println(s.getKey() + "  " + s.getValue());
+		}
 		LinkedHashMap<String, Object> lhp = new LinkedHashMap<String, Object>();
 		System.out.println(lhp);
 		lhp.put("3fk", "skdf");
@@ -60,7 +63,7 @@ public class MapInterface {
 		System.out.println(tm);
 		Entry<Integer, Object> ds = tm.floorEntry(0);
 		System.out.println(ds);
-		
+		Set<Entry<Integer, Object>> sdf = tm.entrySet();
 
 	}
 }

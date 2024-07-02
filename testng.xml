@@ -2,9 +2,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
-	  <parameter name="url" value="https://emicalculator.net/"></parameter>
-	  <classes>
-		  <class name="assignment.MockTest"></class>
-	  </classes>
+    <classes>
+      <class name="assignment.AllureReportTest"/>
+    </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

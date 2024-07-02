@@ -1,6 +1,8 @@
 package com.practice;
 
 import java.io.FileInputStream;
+import java.util.Collections;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -11,6 +13,7 @@ import org.testng.annotations.Test;
 import com.hms.genericUtils.ExcelUtils;
 
 public class Dataprovider {
+	Iterable<String> ds;
 	@DataProvider()
 	public Object[][] getData() throws Exception, Exception {
 		FileInputStream fis = new FileInputStream(".\\src\\test\\resources\\TestData.xlsx");
@@ -25,6 +28,7 @@ public class Dataprovider {
 			}
 		}
 		return obj;
+		
 	}
 
 	@DataProvider()

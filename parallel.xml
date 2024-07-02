@@ -16,4 +16,5 @@
       <class name="com.practice.Sample1Test"/>
     </classes>
   </test> <!-- Test -->
+  <suite-files><suite-file path="BatchSuite.xml"></suite-file></suite-files>
 </suite> <!-- Suite -->

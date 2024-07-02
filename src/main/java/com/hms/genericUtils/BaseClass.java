@@ -15,6 +15,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+
+import com.epam.healenium.SelfHealingDriver;
+
 import org.testng.annotations.AfterSuite;
 
 public class BaseClass {
@@ -26,6 +29,7 @@ public class BaseClass {
 	public static WebDriver driver;
 	public static String browserName;
 	public static String browserVersion;
+//	public static SelfHealingDriver driver;
 
 	@BeforeMethod(alwaysRun = true)
 	public void loginToApp() throws Exception {
@@ -52,14 +56,14 @@ public class BaseClass {
 		else
 			throw new Exception("--invalid browser name--");
 		
-		
+//		 driver=SelfHealingDriver.create(driver1);
 		  Capabilities browserCap = ((RemoteWebDriver)driver).getCapabilities();
 //		Capabilities browserCap = ((RemoteWebDriver) BaseClass.driver).getCapabilities();
 		 browserName = browserCap.getBrowserName();
 		browserVersion = browserCap.getBrowserVersion();
 		wLib.maximizeWindow(driver);
 		wLib.WaitForPageLoad(driver, 10);
-		driver.get(url);
+//		driver.get(url);
 		Reporter.log("--browser launched--", true);
 	}
 

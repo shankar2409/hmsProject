@@ -8,4 +8,5 @@ public interface IpathConstants {
 	String FilePath=".\\src\\test\\resources\\CommonData.properties";
 	String screenshotPath="./Screenshot/";
 	String BaseUrl="http://rmgtestingserver/domain/Hospital_Management_System";
+	
 }
